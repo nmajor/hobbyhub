@@ -33,8 +33,8 @@ class ApplicationController < ActionController::Base
   def set_nav_message
     messages = [
       'Some of these hobbies involve going outside, so be careful.',
-      'Get off your computer and do stuff... After you are finished here.',
-      'Phones are not the only cure for boredom',
+      'Get off your computer and do stuff... you know, after you are done here.',
+      'Phones are not the only cure for boredom.',
       'That was delicious! I want another!',
     ];
 

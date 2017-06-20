@@ -13,8 +13,18 @@
           </div> -->
           <h5 class="hobby-sub-header">
             <div>difficulty: <span class="strong"><%= @hobby.difficulty.humanize %></spa></div>
-            <div>starting cost: <span class="strong">about $<%= @hobby.starting_cost %></span></div>
-            <div>repeat cost: <span class="strong">about $<%= @hobby.repeat_cost %></span></div>
+
+            <% if @hobby.starting_cost.to_i > 0 %>
+              <div>starting cost: <span class="strong">about $<%= @hobby.starting_cost %></span></div>
+            <% else %>
+              <div>starting cost: <span class="strong">FREE</span></div>
+            <% end %>
+
+            <% if @hobby.repeat_cost.to_i > 0 %>
+              <div>repeat cost: <span class="strong">about $<%= @hobby.repeat_cost %></span></div>
+            <% else %>
+              <div>repeat cost: <span class="strong">FREE</span></div>
+            <% end %>
           </h5>
         </div>
       </div>
