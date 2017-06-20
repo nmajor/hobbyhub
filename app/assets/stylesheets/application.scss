@@ -52,6 +52,7 @@ h5 {
   p {
     color: #BBB;
     font-weight: 300;
+    line-height: 26px;
   }
 
   .actions {
@@ -73,30 +74,40 @@ h5 {
 
 .top-bumper { margin-top: 22px; }
 .hobby {
-  padding-bottom: 20px;
   .hobby-main {
-    background: #333;
+    color: #FFF;
+
+    background: #56CCF2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
     padding: 20px 0;
     box-shadow: 0 1px 2px rgba(0,0,0,.1);
     .hobby-header {
-      color: #EEE;
+      // color: #EEE;
       text-align: center;
-      margin: 15px 0 30px;
+      margin: 15px 0 12px;
     }
     .hobby-sub-header {
       display: flex;
       justify-content: space-between;
-      color: #BBB;
+      // color: #BBB;
       margin-bottom: 30px;
 
       div {
         flex: 1;
         text-align: center;
+        font-weight: 400;
+
         .strong {
-          font-weight: 500;
-          color: #CCC;
+          font-weight: 600;
+          // color: #CCC;
         }
       }
+    }
+    .hobby-slider {
+      border: 1px solid #fff;
     }
   }
   .hobby-affiliates {
@@ -111,7 +122,10 @@ h5 {
     }
   }
   .hobby-body {
-    padding: 22px 0;
+    padding: 22px 0 40px 0;
+    background: #56CCF2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     .hobby-affiliate-links {
       text-align: center;

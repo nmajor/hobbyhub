@@ -1,0 +1,15 @@
+<% if @show_greeting %>
+  <div class="greeting">
+    <div class="container">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="wrapper">
+          <h3>Hi! You must be new here.</h3>
+          <p>DatHobby is your rapid fire hobby finder. There are so many fun, interesting, and fulfilling hobbies out there, we hope you find something cool while you are here!</p>
+          <div class="actions">
+            <%= link_to "Got it, thanks!", dismiss_greeting_path, method: :post, remote: true, class: 'btn btn-default' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

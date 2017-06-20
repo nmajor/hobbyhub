@@ -1,5 +1,5 @@
 module HobbiesHelper
-  def youtube_embed(youtube_url)
+  def youtube_embed(youtube_url, args={})
     if youtube_url[/youtu\.be\/([^\?]*)/]
       youtube_id = $1
     else
@@ -8,6 +8,9 @@ module HobbiesHelper
       youtube_id = $5
     end
 
-    %Q{<div class="video-container"><iframe width="853" height="480" src="https://www.youtube.com/embed/#{ youtube_id }" frameborder="0"></iframe></div>}
+    url = "https://www.youtube.com/embed/#{ youtube_id }"
+    url += '?autoplay=1' if args[:autoplay]
+
+    %Q{<div class="video-container"><iframe width="853" height="480" src="#{url}" frameborder="0"></iframe></div>}
   end
 end
