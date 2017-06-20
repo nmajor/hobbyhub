@@ -2,36 +2,106 @@
   <div class="hobby-main">
     <div class="container">
       <div class="row">
-        <%= raw(youtube_embed(@hobby.videos.first.ref)) %>
+        <div class="col-md-8 col-md-offset-2">
+          <h3 class="hobby-header">You might like: <%= @hobby.name %></h3>
+          <h5 class="hobby-sub-header">
+            <div>difficulty: <span class="strong"><%= @hobby.difficulty.humanize %></spa></div>
+            <div>starting cost: <span class="strong">about $<%= @hobby.starting_cost %></span></div>
+            <div>repeat cost: <span class="strong">about $<%= @hobby.repeat_cost %></span></div>
+          </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="hobby-slider">
+          <% @hobby.videos.each do |video| %>
+            <div class="hobby-slider-item"><%= raw(youtube_embed(video.ref)) %></div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
+  <% if @hobby.affiliate_links.any? %>
+    <div class="hobby-affiliates ad content-box">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div>
+              <h3>Get Started!</h3>
+              <div class="hobby-affiliate-links">
+                <% @hobby.affiliate_links.each do |affiliate_link| %>
+                  <div class="affiliate_link">
+                    <%= raw(affiliate_link.ref) %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hobby-affiliates adblocked content-box" style="display: none;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <div class="adblock-message">
+              <h3>Adblock is cool, but...</h3>
+              <p>If you disable it we will show you amazon products that can get you started with this hobby right away.</p>
+              <p>Plus it will help us pay for server time.</p>
+              <p>If you don't care about that, no problem, we hope you find a cool new hobby.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% content_for(:after_js) do %>
+      <%= javascript_tag do %>
+      $(window).load(function () {
+        if($(".hobby-affiliate-links").height() == "0") {
+          $(".hobby-affiliates.ad").hide();
+          $(".hobby-affiliates.adblocked").show();
+        }
+      });
+      <% end %>
+    <% end %>
+  <% end %>
   <div class="hobby-body">
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
-          <div class="hobby-desc">
+        <div class="col-md-6">
+          <div class="hobby-desc content-box">
+            <% if user_signed_in? %><%= link_to 'edit', edit_hobby_path(@hobby) %><% end %>
             <h3><%= @hobby.name %></h3>
-            <h5 class="hobby-sub-header">
-              <span>difficulty: <%= @hobby.difficulty.humanize %></span>
-              <span>starting cost: about $<%= @hobby.starting_cost %></span>
-              <span>repeat cost: about $<%= @hobby.repeat_cost %></span>
-            </h5>
-            <hr>
             <p><%= @hobby.desc %></p>
           </div>
+        </div>
+        <div class="col-md-6">
           <% if @hobby.resources.any? %>
-            <div class="hobby-resources">
-              <h3>Learn more with these resources!</h3>
+            <div class="content-box">
+              <h3>Resources!</h3>
               <% @hobby.resources.each do |resource| %>
                 <div><%= link_to resource.desc, resource.ref %></div>
               <% end %>
             </div>
           <% end %>
         </div>
-        <div class="col-md-4">
-        </div>
       </div>
     </div>
   </div>
 </div>
+
+<% content_for(:title_tag) do %>
+  <%= @hobby.name %>
+<% end %>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('.hobby-slider').slick({
+        dots: true,
+        swipe: true,
+      });
+    });
+  <% end %>
+<% end %>

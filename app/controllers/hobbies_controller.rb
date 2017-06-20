@@ -1,12 +1,18 @@
 class HobbiesController < ApplicationController
-  before_action :set_hobby, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only: [:show]
+  before_action :set_hobby, only: [:edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:show, :random]
+  skip_after_action :verify_authorized, only: [:random]
 
   def index
     @hobbies = policy_scope(Hobby)
   end
 
   def show
+    @hobby = Hobby.find_by_slug(params[:slug])
+    authorize @hobby
+    if !@hobby
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 
   def new
@@ -22,7 +28,7 @@ class HobbiesController < ApplicationController
     authorize @hobby
 
     if @hobby.save
-      redirect_to @hobby, notice: 'Hobby was successfully created.'
+      redirect_to hobby_slug_path(slug: @hobby.slug), notice: 'Hobby was successfully created.'
     else
       render :new
     end
@@ -30,7 +36,7 @@ class HobbiesController < ApplicationController
 
   def update
     if @hobby.update(hobby_params)
-      redirect_to @hobby, notice: 'Hobby was successfully updated.'
+      redirect_to hobby_slug_path(slug: @hobby.slug), notice: 'Hobby was successfully updated.'
     else
       render :edit
     end
@@ -49,14 +55,11 @@ class HobbiesController < ApplicationController
 
   private
     def set_hobby
-      @hobby = Hobby.find_by_slug(params[:slug])
-      if !@hobby
-        raise ActionController::RoutingError.new('Not Found')
-      end
+      @hobby = Hobby.find(params[:id])
       authorize @hobby
     end
 
     def hobby_params
-      params.require(:hobby).permit(:name, :desc, :public, :difficulty, :starting_cost, :repeat_cost, resources_attributes: [:ref, :desc], affiliate_links_attributes: [:ref, :desc], videos_attributes: [:ref, :desc])
+      params.require(:hobby).permit(:name, :desc, :public, :difficulty, :starting_cost, :repeat_cost, resources_attributes: [:id, :ref, :desc, :_destroy], affiliate_links_attributes: [:id, :ref, :desc, :_destroy], videos_attributes: [:id, :ref, :desc, :_destroy])
     end
 end

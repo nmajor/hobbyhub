@@ -1,1 +1,5 @@
-<%= render 'linkable_fields', f: f %>
+<div class="nested-fields">
+  <%= f.input :ref %>
+  <%= f.input :desc %>
+  <%= link_to_remove_association "remove resource", f %>
+</div>

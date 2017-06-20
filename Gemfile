@@ -19,6 +19,7 @@ gem 'uglifier'
 
 gem "pundit"
 gem "cocoon"
+gem "jquery-slick-rails"
 
 group :development, :test do
   gem 'better_errors'

@@ -8,28 +8,124 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "vendor/index";
+@import 'slick';
+@import 'slick-theme';
+
+.slick-dots li.slick-active button:before {
+  color: #EEE;
+}
+
+.slick-dots li button:before {
+  color: #EEE;
+}
 
 // Your CSS
 @import "layout/index";
 @import "components/index";
 @import "pages/index";
 
-.hobby {
-  margin-bottom: 100px;
+body {
+  background: #f1f1f1;
+}
 
-  .hobby-main {
-    background: #111;
-    padding-bottom: 50px;
+h3 {
+  font-weight: 600;
+  margin-top: 3px;
+}
+h5 {
+  margin-top: 3px;
+  font-weight: 300;
+}
+
+.greeting {
+  padding: 30px 0;
+  background: #282828;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  h3 {
+    color: #EEE;
+    text-align: center;
   }
-  .hobby-sub-header {
-    display: flex;
-    align-items: space-around;
 
-    span {
-      flex: 1;
-      text-align: left;
+  p {
+    color: #BBB;
+    font-weight: 300;
+  }
+
+  .actions {
+    text-align: right;
+  }
+
+  .btn-default {
+    color: #eee;
+    background-color: transparent;
+    border-color: #eee;
+
+    &:hover {
+      color: #333;
+      background-color: #eee;
+      border-color: #eee;
     }
   }
+}
+
+.top-bumper { margin-top: 22px; }
+.hobby {
+  padding-bottom: 20px;
+  .hobby-main {
+    background: #333;
+    padding: 20px 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    .hobby-header {
+      color: #EEE;
+      text-align: center;
+      margin: 15px 0 30px;
+    }
+    .hobby-sub-header {
+      display: flex;
+      justify-content: space-between;
+      color: #BBB;
+      margin-bottom: 30px;
+
+      div {
+        flex: 1;
+        text-align: center;
+        .strong {
+          font-weight: 500;
+          color: #CCC;
+        }
+      }
+    }
+  }
+  .hobby-affiliates {
+    background: #fff;
+    .adblock-message {
+      background: #f1f1f1;
+      padding: 22px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.1);
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      border: 1px solid #dbdbdb;
+    }
+  }
+  .hobby-body {
+    padding: 22px 0;
+
+    .hobby-affiliate-links {
+      text-align: center;
+      .affiliate_link {}
+    }
+  }
+}
+
+.content-box {
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 22px;
 }
 
 .video-container {
@@ -46,4 +142,14 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+footer {
+  padding: 30px 0;
+  color: #CCC;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 100;
 }
