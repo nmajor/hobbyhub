@@ -89,6 +89,13 @@ h5 {
       text-align: center;
       margin: 15px 0 12px;
     }
+    .header-break {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+
+      div { margin: 0 10px; }
+    }
     .hobby-sub-header {
       display: flex;
       justify-content: space-between;
