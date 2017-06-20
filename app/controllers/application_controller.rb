@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
       'Some of these hobbies involve going outside, so be careful.',
       'Get off your computer and do stuff... you know, after you are done here.',
       'Phones are not the only cure for boredom.',
+      'Hey Mikey, I think he likes it.',
       'That was delicious! I want another!',
     ];
 
