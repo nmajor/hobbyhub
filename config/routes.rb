@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users
+
+  resources :hobbies, except: [:show] do
+    get 'random', on: :collection
+  end
+  get '/:slug', to: 'hobbies#show', as: 'hobby_slug'
 end

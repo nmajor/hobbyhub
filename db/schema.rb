@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170619184415) do
+ActiveRecord::Schema.define(version: 20170619225256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "hobbies", force: :cascade do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.boolean  "public"
+    t.string   "difficulty"
+    t.integer  "starting_cost"
+    t.integer  "repeat_cost"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "slug"
+    t.index ["slug"], name: "index_hobbies_on_slug", using: :btree
+  end
+
+  create_table "references", force: :cascade do |t|
+    t.string   "ref"
+    t.string   "desc"
+    t.string   "type"
+    t.integer  "hobby_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

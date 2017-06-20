@@ -1,0 +1,2 @@
+class AffiliateLink < Reference
+end

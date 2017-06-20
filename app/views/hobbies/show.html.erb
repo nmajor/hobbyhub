@@ -1,0 +1,37 @@
+<div class="hobby">
+  <div class="hobby-main">
+    <div class="container">
+      <div class="row">
+        <%= raw(youtube_embed(@hobby.videos.first.ref)) %>
+      </div>
+    </div>
+  </div>
+  <div class="hobby-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="hobby-desc">
+            <h3><%= @hobby.name %></h3>
+            <h5 class="hobby-sub-header">
+              <span>difficulty: <%= @hobby.difficulty.humanize %></span>
+              <span>starting cost: about $<%= @hobby.starting_cost %></span>
+              <span>repeat cost: about $<%= @hobby.repeat_cost %></span>
+            </h5>
+            <hr>
+            <p><%= @hobby.desc %></p>
+          </div>
+          <% if @hobby.resources.any? %>
+            <div class="hobby-resources">
+              <h3>Learn more with these resources!</h3>
+              <% @hobby.resources.each do |resource| %>
+                <div><%= link_to resource.desc, resource.ref %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-md-4">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
