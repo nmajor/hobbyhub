@@ -1,43 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Hobbies</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Desc</th>
-      <th>Public</th>
-      <th>Difficulty</th>
-      <th>Starting Cost</th>
-      <th>Repeat Cost</th>
-      <th>Resources</th>
-      <th>Affiliatelinks</th>
-      <th>Videos</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="content-box">
+        <h1>Hobbies</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Desc</th>
+              <th>Public</th>
+              <th>Difficulty</th>
+              <th>Starting Cost</th>
+              <th>Repeat Cost</th>
+              <th>Resources</th>
+              <th>Affiliate Links</th>
+              <th>Videos</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-  <tbody>
-    <% @hobbies.each do |hobby| %>
-      <tr>
-        <td><%= hobby.name %></td>
-        <td><%= hobby.desc %></td>
-        <td><%= hobby.public %></td>
-        <td><%= hobby.difficulty %></td>
-        <td><%= hobby.starting_cost %></td>
-        <td><%= hobby.repeat_cost %></td>
-        <td><%= hobby.resources %></td>
-        <td><%= hobby.affiliateLinks %></td>
-        <td><%= hobby.videos %></td>
-        <td><%= link_to 'Show', hobby %></td>
-        <td><%= link_to 'Edit', edit_hobby_path(hobby) %></td>
-        <td><%= link_to 'Destroy', hobby, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+          <tbody>
+            <% @hobbies.each do |hobby| %>
+              <tr>
+                <td><%= hobby.name %></td>
+                <td><%= hobby.public %></td>
+                <td><%= hobby.desc.truncate(30) %></td>
+                <td><%= hobby.difficulty %></td>
+                <td><%= hobby.starting_cost %></td>
+                <td><%= hobby.repeat_cost %></td>
+                <td><%= hobby.resources.size %></td>
+                <td><%= hobby.affiliate_links.size %></td>
+                <td><%= hobby.videos.size %></td>
+                <td><%= link_to 'Show', hobby %></td>
+                <td><%= link_to 'Edit', edit_hobby_path(hobby) %></td>
+                <td><%= link_to 'Destroy', hobby, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 <br>
 
 <%= link_to 'New Hobby', new_hobby_path %>
