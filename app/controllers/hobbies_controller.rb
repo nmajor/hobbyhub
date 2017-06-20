@@ -49,7 +49,7 @@ class HobbiesController < ApplicationController
 
   def random
     offset = rand(Hobby.count)
-    @hobby = Hobby.offset(offset).first
+    @hobby = Hobby.where(public: true).offset(offset).first
     redirect_to hobby_slug_path(slug: @hobby.slug)
   end
 

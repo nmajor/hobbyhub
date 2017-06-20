@@ -21,7 +21,7 @@
     </div>
   </div>
   <% if @hobby.affiliate_links.any? %>
-    <div class="hobby-affiliates ad content-box">
+    <div class="hobby-affiliates main content-box">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <div class="hobby-affiliates adblocked content-box" style="display: none;">
+    <div class="hobby-affiliates nice-talk content-box" style="display: none;">
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-md-offset-3">
@@ -59,8 +59,8 @@
       <%= javascript_tag do %>
       $(window).load(function () {
         if($(".hobby-affiliate-links").height() == "0") {
-          $(".hobby-affiliates.ad").hide();
-          $(".hobby-affiliates.adblocked").show();
+          $(".hobby-affiliates.main").hide();
+          $(".hobby-affiliates.nice-talk").show();
         }
       });
       <% end %>
