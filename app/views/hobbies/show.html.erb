@@ -3,14 +3,14 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h3 class="hobby-header">You might like: <%= @hobby.name %></h3>
-          <div class="header-break">
+          <h3 class="hobby-header">You might like <span class="hobby-name"><%= @hobby.name %></span></h3>
+          <!-- <div class="header-break">
             <div>&middot;</div>
             <div>&middot;</div>
             <div>&middot;</div>
             <div>&middot;</div>
             <div>&middot;</div>
-          </div>
+          </div> -->
           <h5 class="hobby-sub-header">
             <div>difficulty: <span class="strong"><%= @hobby.difficulty.humanize %></spa></div>
             <div>starting cost: <span class="strong">about $<%= @hobby.starting_cost %></span></div>
@@ -27,6 +27,30 @@
       </div>
     </div>
   </div>
+  <div class="hobby-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="hobby-desc content-box">
+            <% if user_signed_in? %><%= link_to 'edit', edit_hobby_path(@hobby) %><% end %>
+            <h3><%= @hobby.name %></h3>
+            <p><%= @hobby.desc %></p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <% if @hobby.resources.any? %>
+            <div class="content-box">
+              <h3>Resources!</h3>
+              <% @hobby.resources.each do |resource| %>
+                <div><%= link_to resource.desc, resource.ref %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <% if @hobby.affiliate_links.any? %>
     <div class="hobby-affiliates main content-box">
       <div class="container">
@@ -73,29 +97,6 @@
       <% end %>
     <% end %>
   <% end %>
-  <div class="hobby-body">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="hobby-desc content-box">
-            <% if user_signed_in? %><%= link_to 'edit', edit_hobby_path(@hobby) %><% end %>
-            <h3><%= @hobby.name %></h3>
-            <p><%= @hobby.desc %></p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <% if @hobby.resources.any? %>
-            <div class="content-box">
-              <h3>Resources!</h3>
-              <% @hobby.resources.each do |resource| %>
-                <div><%= link_to resource.desc, resource.ref %></div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <% content_for(:title_tag) do %>
