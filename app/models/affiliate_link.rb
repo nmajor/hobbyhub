@@ -1,2 +1,2 @@
-class AffiliateLink < Reference
+class AffiliateLink < Trait
 end

@@ -1,2 +1,2 @@
-class Resource < Reference
+class Resource < Trait
 end

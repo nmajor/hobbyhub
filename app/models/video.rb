@@ -1,2 +1,2 @@
-class Video < Reference
+class Video < Trait
 end

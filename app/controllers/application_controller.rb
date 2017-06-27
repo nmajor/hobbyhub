@@ -25,9 +25,6 @@ class ApplicationController < ActionController::Base
 
   def set_show_greeting
     @show_greeting = session["greeted"] ? false : true
-    puts 'blah'
-    p @show_greeting
-    p session
   end
 
   def set_nav_message

@@ -19,6 +19,7 @@ gem 'uglifier'
 
 gem "pundit"
 gem "cocoon"
+gem 'jquery-ui-rails'
 gem "jquery-slick-rails"
 
 group :development, :test do

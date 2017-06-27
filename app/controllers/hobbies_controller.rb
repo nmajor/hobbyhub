@@ -28,7 +28,7 @@ class HobbiesController < ApplicationController
     authorize @hobby
 
     if @hobby.save
-      redirect_to hobby_slug_path(slug: @hobby.slug), notice: 'Hobby was successfully created.'
+      redirect_to edit_hobby_path(@hobby), notice: 'Hobby was successfully created.'
     else
       render :new
     end
@@ -36,7 +36,7 @@ class HobbiesController < ApplicationController
 
   def update
     if @hobby.update(hobby_params)
-      redirect_to hobby_slug_path(slug: @hobby.slug), notice: 'Hobby was successfully updated.'
+      redirect_to edit_hobby_path(@hobby), notice: 'Hobby was successfully updated.'
     else
       render :edit
     end
@@ -60,6 +60,6 @@ class HobbiesController < ApplicationController
     end
 
     def hobby_params
-      params.require(:hobby).permit(:name, :desc, :public, :difficulty, :starting_cost, :repeat_cost, resources_attributes: [:id, :ref, :desc, :_destroy], affiliate_links_attributes: [:id, :ref, :desc, :_destroy], videos_attributes: [:id, :ref, :desc, :_destroy])
+      params.require(:hobby).permit(:name, :desc, :public, :difficulty, :starting_cost, :repeat_cost, resources_attributes: [:id, :ref, :desc, :position, :_destroy], affiliate_links_attributes: [:id, :ref, :desc, :position, :_destroy], visuals_attributes: [:id, :ref, :desc, :position, :_destroy])
     end
 end

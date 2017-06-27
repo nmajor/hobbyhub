@@ -2,46 +2,102 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
+    <%= f.input :public %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :name %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :difficulty, collection: Hobby::DIFFICULTIES %>
+      </div>
+    </div>
+
     <%= f.input :desc %>
-    <%= f.input :difficulty, collection: Hobby::DIFFICULTIES %>
-    <%= f.input :starting_cost %>
-    <%= f.input :repeat_cost %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :starting_cost %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :repeat_cost %>
+      </div>
+    </div>
 
     <h3>Resources</h3>
     <div id="resources">
-      <%= f.simple_fields_for :resources do |resource| %>
-        <%= render 'resource_fields', f: resource %>
-      <% end %>
-      <div class="links">
-        <%= link_to_add_association 'add resource', f, :resources %>
+      <div class="sortable">
+        <%= f.simple_fields_for :resources do |resource| %>
+          <%= render 'resource_fields', f: resource %>
+        <% end %>
+      </div>
+      <div class="links text-right">
+        <%= link_to_add_association 'add resource', f, :resources, class: 'btn btn-default' %>
       </div>
     </div>
 
-    <h3>Affiliate Links</h3>
+    <h3 class="top-bumper">Affiliate Links</h3>
     <div id="affiliate-links">
-      <%= f.simple_fields_for :affiliate_links do |affiliate_link| %>
-        <%= render 'affiliate_link_fields', f: affiliate_link %>
-      <% end %>
-      <div class="links">
-        <%= link_to_add_association 'add affiliate link', f, :affiliate_links %>
+      <div class="sortable">
+        <%= f.simple_fields_for :affiliate_links do |affiliate_link| %>
+          <%= render 'affiliate_link_fields', f: affiliate_link %>
+        <% end %>
+      </div>
+      <div class="links text-right">
+        <%= link_to_add_association 'add affiliate link', f, :affiliate_links, class: 'btn btn-default' %>
       </div>
     </div>
 
-    <h3>Videos</h3>
-    <div id="videos">
-      <%= f.simple_fields_for :videos do |video| %>
-        <%= render 'video_fields', f: video %>
-      <% end %>
-      <div class="links">
-        <%= link_to_add_association 'add video', f, :videos %>
+    <h3 class="top-bumper">Visuals (Videos and Images)</h3>
+    <div id="visuals">
+      <div class="sortable">
+        <%= f.simple_fields_for :visuals do |visual| %>
+          <%= render 'visual_fields', f: visual %>
+        <% end %>
+      </div>
+      <div class="links text-right">
+        <%= link_to_add_association 'add visual', f, :visuals, class: 'btn btn-default' %>
       </div>
     </div>
-
-    <%= f.input :public %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-actions text-right top-bumper">
+    <%= f.button :submit, class: 'btn btn-success' %>
   </div>
+<% end %>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    function setPositions() {
+      $('.sortable-item').each(function(i){
+        $(this).find('.sortable-position').val(i);
+      });
+    }
+
+    $( ".sortable" ).sortable({
+      containment: "parent",
+      appendTo: document.body,
+      cursor: "move",
+    });
+
+    $('.sortable').sortable().bind('sortupdate', function(e, ui) {
+      setPositions();
+    });
+
+    $('#resources').on('cocoon:after-insert', function() {
+      setPositions();
+    }).on("cocoon:after-remove", function() {
+      setPositions();
+    });
+
+    $('#affiliate_links').on('cocoon:after-insert', function() {
+      setPositions();
+    }).on("cocoon:after-remove", function() {
+      setPositions();
+    });
+
+    $('#visuals').on('cocoon:after-insert', function() {
+      setPositions();
+    }).on("cocoon:after-remove", function() {
+      setPositions();
+    });
+  <% end %>
 <% end %>
