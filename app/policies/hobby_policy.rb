@@ -5,15 +5,23 @@ class HobbyPolicy < ApplicationPolicy
     end
   end
 
-  def create?
+  def show?
     true
+  end
+
+  def index?
+    user.admin
+  end
+
+  def create?
+    user.admin
   end
 
   def destroy?
-    true
+    user.admin
   end
 
   def update?
-    true
+    user.admin
   end
 end

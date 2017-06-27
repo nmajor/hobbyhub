@@ -26,8 +26,8 @@
 
 body {
   background: #56CCF2;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to top, #2F80ED, #2F80ED);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #56CCF2, #2F80ED); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 h3 {
@@ -92,7 +92,7 @@ h5 {
       h3 {
         color: #fff;
         opacity: 0.7;
-        font-weight: 500;
+        font-weight: 400;
         font-size: 24px;
       }
 
