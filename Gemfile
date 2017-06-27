@@ -21,6 +21,7 @@ gem "pundit"
 gem "cocoon"
 gem 'jquery-ui-rails'
 gem "jquery-slick-rails"
+gem 'acts-as-taggable-on', '~> 4.0'
 
 group :development, :test do
   gem 'better_errors'

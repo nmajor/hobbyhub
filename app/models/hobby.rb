@@ -1,5 +1,8 @@
 class Hobby < ApplicationRecord
   DIFFICULTIES = %w( easy average hard very-hard )
+  AVAILABLE_TAGS = %w( indoor outdoor computer satire )
+
+  acts_as_taggable
 
   has_many :resources, dependent: :destroy
   has_many :affiliate_links, dependent: :destroy

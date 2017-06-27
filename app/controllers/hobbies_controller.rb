@@ -35,6 +35,9 @@ class HobbiesController < ApplicationController
   end
 
   def update
+    # byebug
+    # hobby_params[:tags] = hobby_params[:tags].reject{|t| return t.blank? }
+
     if @hobby.update(hobby_params)
       redirect_to edit_hobby_path(@hobby), notice: 'Hobby was successfully updated.'
     else
@@ -60,6 +63,6 @@ class HobbiesController < ApplicationController
     end
 
     def hobby_params
-      params.require(:hobby).permit(:name, :desc, :public, :difficulty, :starting_cost, :repeat_cost, resources_attributes: [:id, :ref, :desc, :position, :_destroy], affiliate_links_attributes: [:id, :ref, :desc, :position, :_destroy], visuals_attributes: [:id, :ref, :desc, :position, :_destroy])
+      params.require(:hobby).permit(:name, :desc, :public, :difficulty, :starting_cost, :repeat_cost, resources_attributes: [:id, :ref, :desc, :position, :_destroy], affiliate_links_attributes: [:id, :ref, :desc, :position, :_destroy], visuals_attributes: [:id, :ref, :desc, :position, :_destroy], tag_list: [])
     end
 end

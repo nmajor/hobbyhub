@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <div class="hobby-header">
-            <h3>You might like</h3>
+            <h3>We think you'll love</h3>
             <h1><%= @hobby.name %></h1>
           </div>
         </div>
@@ -54,7 +54,7 @@
         </div>
         <div class="col-md-3">
           <div class="content-box hobby-details">
-            <div>difficulty: <span class="strong"><%= @hobby.difficulty.humanize %></spa></div>
+            <div>difficulty: <span class="strong"><%= Hobby::DIFFICULTIES[@hobby.difficulty.humanize.to_i].titleize %></spa></div>
 
             <% if @hobby.starting_cost.to_i > 0 %>
               <div>starting cost: <span class="strong">about $<%= @hobby.starting_cost %></span></div>
@@ -85,7 +85,7 @@
         <div class="col-md-6">
           <% if @hobby.resources.any? %>
             <div class="content-box">
-              <h3>Resources!</h3>
+              <h3>Learn More!</h3>
               <% @hobby.resources.each do |resource| %>
                 <div><%= link_to resource.desc, resource.ref %></div>
               <% end %>
