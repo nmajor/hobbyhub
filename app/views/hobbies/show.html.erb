@@ -54,7 +54,7 @@
         </div>
         <div class="col-md-3">
           <div class="content-box hobby-details">
-            <div>difficulty: <span class="strong"><%= Hobby::DIFFICULTIES[@hobby.difficulty.humanize.to_i].titleize %></spa></div>
+            <div>difficulty: <span class="strong"><%= Hobby::DIFFICULTIES[@hobby.difficulty.to_i].titleize %></spa></div>
 
             <% if @hobby.starting_cost.to_i > 0 %>
               <div>starting cost: <span class="strong">about $<%= @hobby.starting_cost %></span></div>
