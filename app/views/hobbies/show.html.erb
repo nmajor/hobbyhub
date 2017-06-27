@@ -18,38 +18,32 @@
           </div>
         </div>
         <div class="col-md-6">
-          <% if @hobby.visuals.length > 1 %>
-            <div class="hobby-slider slider-for">
-              <% @hobby.visuals.each do |visual| %>
-                <div class="hobby-slider-item"><%= raw(visual_tag(visual)) %></div>
-              <% end %>
-            </div>
-
-            <% content_for(:after_js) do %>
-              <%= javascript_tag do %>
-                $(document).ready(function() {
-                  $('.hobby-slider.slider-for').slick({
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    fade: true,
-                    asNavFor: '.hobby-slider.slider-nav'
-                  });
-                  $('.hobby-slider.slider-nav').slick({
-                    slidesToShow: <%= @hobby.visuals.length %>,
-                    slidesToScroll: 1,
-                    asNavFor: '.hobby-slider.slider-for',
-                    dots: true,
-                    focusOnSelect: true,
-                    variableWidth: true
-                  });
-                });
-              <% end %>
-            <% end %>
-          <% else %>
-            <div class="hobby-slider slider-for">
+          <div class="hobby-slider slider-for">
+            <% @hobby.visuals.each do |visual| %>
               <div class="hobby-slider-item"><%= raw(visual_tag(visual)) %></div>
-            </div>
+            <% end %>
+          </div>
+
+          <% content_for(:after_js) do %>
+            <%= javascript_tag do %>
+              $(document).ready(function() {
+                $('.hobby-slider.slider-for').slick({
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  arrows: false,
+                  fade: true,
+                  asNavFor: '.hobby-slider.slider-nav'
+                });
+                $('.hobby-slider.slider-nav').slick({
+                  slidesToShow: <%= @hobby.visuals.length %>,
+                  slidesToScroll: 1,
+                  asNavFor: '.hobby-slider.slider-for',
+                  dots: true,
+                  focusOnSelect: true,
+                  variableWidth: true
+                });
+              });
+            <% end %>
           <% end %>
         </div>
         <div class="col-md-3">
