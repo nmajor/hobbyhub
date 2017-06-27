@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
-  before_action :set_nav_message
+  before_action :set_flavor_message
+  before_action :set_button_text
   before_action :set_show_greeting
 
   include Pundit
@@ -27,15 +28,24 @@ class ApplicationController < ActionController::Base
     @show_greeting = session["greeted"] ? false : true
   end
 
-  def set_nav_message
+  def set_flavor_message
     messages = [
       'Some of these hobbies involve going outside, so be careful.',
       'Get off your computer and do stuff... you know, after you are done here.',
       'Phones are not the only cure for boredom.',
-      'Hey Mikey, I think he likes it.',
+    ];
+
+    @flavor_message = messages.sample
+  end
+
+  def set_button_text
+    texts = [
+      'Hey Mikey, I think he likes it. Another?',
+      'Next hobby!',
+      'Another Hobby!',
       'That was delicious! I want another!',
     ];
 
-    @nav_message = messages.sample
+    @button_text = texts.sample
   end
 end

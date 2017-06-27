@@ -120,6 +120,9 @@ h5 {
 
         &.slick-current {
           opacity: 1;
+          outline: none;
+          &:active { outline: none; }
+          &:focus { outline: none; }
         }
         img {
         }
@@ -252,3 +255,5 @@ footer {
 .hobby_tag_list {
   .checkbox { display: inline-block; margin-left: 20px; }
 }
+
+.brand { color: #FFF; }
