@@ -89,8 +89,19 @@ h5 {
       text-align: center;
       margin: 15px 0 12px;
 
-      .hobby-name {
-        text-decoration: underline;
+      h3 {
+        color: #fff;
+        opacity: 0.7;
+        font-weight: 500;
+        font-size: 24px;
+      }
+
+      h1 {
+        color: #fff;
+        font-size: 45px;
+        font-style: italic;
+        margin-top: 10px;
+        margin-bottom: 26px;
       }
     }
     .header-break {
@@ -100,38 +111,80 @@ h5 {
 
       div { margin: 0 10px; }
     }
-    .hobby-sub-header {
-      display: flex;
-      justify-content: space-between;
-      // color: #BBB;
-      margin-bottom: 30px;
-      margin-top: 5px;
-
-      div {
-        flex: 1;
-        text-align: center;
-        font-weight: 400;
-
-        .strong {
-          font-weight: 600;
-          // color: #CCC;
-        }
-      }
-    }
-    .hobby-slider.slider-for {
-      border: 1px solid #fff;
-    }
     .hobby-slider.slider-nav {
       .hobby-slider-item {
-        border: 1px solid #fff;
-        margin: 0 5px;
+        display: block;
+        margin-bottom: 5px;
+        width: 100%;
+        opacity: 0.5;
 
         &.slick-current {
-          border: 3px solid #fff;
+          opacity: 1;
         }
         img {
         }
       }
+    }
+    .hobby-slider {width: 100%; }
+    .hobby-slider.slider-nav {
+      .slick-track { width: 100% !important; }
+    }
+    .slick-list { width: 100%; }
+    .visual-thumb {
+      width: 100%;
+
+      img { width: 100%; }
+      position: relative;
+
+      &.video {
+        .play-overlay {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          font-size: 20px;
+          top: 0%;
+          align-items: center;
+
+          .icon-wrapper {
+            background: #000;
+            padding: 4px 15px 3px 18px;
+            opacity: 0.7;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px;
+          }
+        }
+      }
+    }
+    .slick-list { width: 100%; }
+
+    .hobby-slider.slider-nav {
+      height: 30vw;
+      background: #111;
+
+      overflow-y: scroll;
+    }
+    .hobby-slider.slider-for {
+      background: #111;
+      height: 30vw;
+      overflow: hidden;
+
+      .slick-track {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      img {
+        height: 30vw;
+        width: 100%;
+        object-fit: contain; /*magic*/
+      }
+    }
+    .hobby-details {
+      height: 30vw;
     }
   }
   .hobby-affiliates {
@@ -190,4 +243,8 @@ footer {
   border: 1px solid #CCC;
   margin-bottom: 15px;
   background: #FFF;
+}
+
+.hobby-details {
+  color: #333;
 }

@@ -1,44 +1,27 @@
 <div class="hobby">
   <div class="hobby-main">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h3 class="hobby-header">You might like <span class="hobby-name"><%= @hobby.name %></span></h3>
-          <!-- <div class="header-break">
-            <div>&middot;</div>
-            <div>&middot;</div>
-            <div>&middot;</div>
-            <div>&middot;</div>
-            <div>&middot;</div>
-          </div> -->
-          <h5 class="hobby-sub-header">
-            <div>difficulty: <span class="strong"><%= @hobby.difficulty.humanize %></spa></div>
-
-            <% if @hobby.starting_cost.to_i > 0 %>
-              <div>starting cost: <span class="strong">about $<%= @hobby.starting_cost %></span></div>
-            <% else %>
-              <div>starting cost: <span class="strong">FREE</span></div>
-            <% end %>
-
-            <% if @hobby.repeat_cost.to_i > 0 %>
-              <div>repeat cost: <span class="strong">about $<%= @hobby.repeat_cost %></span></div>
-            <% else %>
-              <div>repeat cost: <span class="strong">FREE</span></div>
-            <% end %>
-          </h5>
+          <div class="hobby-header">
+            <h3>You might like</h3>
+            <h1><%= @hobby.name %></h1>
+          </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-3">
+          <div class="hobby-slider slider-nav">
+            <% @hobby.visuals.each do |visual| %>
+              <div class="hobby-slider-item"><%= raw(visual_thumb_tag(visual)) %></div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-6">
           <% if @hobby.visuals.length > 1 %>
             <div class="hobby-slider slider-for">
               <% @hobby.visuals.each do |visual| %>
                 <div class="hobby-slider-item"><%= raw(visual_tag(visual)) %></div>
-              <% end %>
-            </div>
-            <div class="hobby-slider slider-nav">
-              <% @hobby.visuals.each do |visual| %>
-                <div class="hobby-slider-item"><%= visual_thumb_tag(visual) %></div>
               <% end %>
             </div>
 
@@ -65,9 +48,26 @@
             <% end %>
           <% else %>
             <div class="hobby-slider slider-for">
-              <div class="hobby-slider-item"><%= visual_tag(visual) %></div>
+              <div class="hobby-slider-item"><%= raw(visual_tag(visual)) %></div>
             </div>
           <% end %>
+        </div>
+        <div class="col-md-3">
+          <div class="content-box hobby-details">
+            <div>difficulty: <span class="strong"><%= @hobby.difficulty.humanize %></spa></div>
+
+            <% if @hobby.starting_cost.to_i > 0 %>
+              <div>starting cost: <span class="strong">about $<%= @hobby.starting_cost %></span></div>
+            <% else %>
+              <div>starting cost: <span class="strong">FREE</span></div>
+            <% end %>
+
+            <% if @hobby.repeat_cost.to_i > 0 %>
+              <div>repeat cost: <span class="strong">about $<%= @hobby.repeat_cost %></span></div>
+            <% else %>
+              <div>repeat cost: <span class="strong">FREE</span></div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

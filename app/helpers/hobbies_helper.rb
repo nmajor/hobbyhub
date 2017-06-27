@@ -23,18 +23,18 @@ module HobbiesHelper
   end
 
   def visual_tag(visual)
-    if (visual.is_video?)
-      "<div className=\"visual-main video\">#{youtube_embed(visual.ref)}</div>"
+    if visual.is_video?
+      "<div class=\"visual-main video\">#{youtube_embed(visual.ref)}</div>"
     else
-      "<div className=\"visual-main image\">#{image_tag(visual.ref)}</div>"
+      "<div class=\"visual-main image\">#{image_tag(visual.ref)}</div>"
     end
   end
 
   def visual_thumb_tag(visual)
-    if (visual.is_video?)
-      "<div className=\"visual-thumb video\">#{image_tag(youtube_thumbnail(visual.ref)}</div>"
+    if visual.is_video?
+      "<div class=\"visual-thumb video\">#{image_tag(youtube_thumbnail(visual.ref))}<div class=\"play-overlay\"><div class=\"icon-wrapper\"><span class=\"glyphicon glyphicon-play\" aria-hidden=\"true\"></span></div></div></div>"
     else
-      "<div className=\"visual-thumb video\">#{image_tag(visual.ref)}</div>"
+      "<div class=\"visual-thumb video\">#{image_tag(visual.ref)}</div>"
     end
   end
 end
